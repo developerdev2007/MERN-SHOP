@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Footer from "../components/Layout/Footer";
 import Header from "../components/Layout/Header";
-import { set } from "mongoose";
 import styles from "../styles/style";
 
 const FaqPage = () => {

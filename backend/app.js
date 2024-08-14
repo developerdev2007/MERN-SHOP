@@ -25,7 +25,7 @@ app.use(
     credentials: true,
   })
 );
-app.use("/", Express.static(path.join(__dirname, "./uploads")));
+app.use("/", Express.static(path.join(process.cwd(), "./uploads")));
 app.use("/test", (req, res, next) => {
   res.send("Hello world!!");
 });

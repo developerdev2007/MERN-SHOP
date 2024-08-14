@@ -8,10 +8,10 @@
   },
   "scripts": {
     "frontend": "npm start --prefix frontend",
-    "server": "nodemon server.js",
+    "dev": "nodemon server.js",
     "socket": "nodemon socket/index.js",
     "web": "concurrently \"npm run frontend\" \"npm run server\"",
-    "dev": "concurrently \"npm run frontend\" \"npm run server\" \" npm run socket\" "
+    "develop": "concurrently \"npm run frontend\" \"npm run server\" \" npm run socket\" "
   },
   "keywords": [],
   "author": "developerdev2007",

@@ -1,11 +1,6 @@
 {
   "version": 2,
-  "name": "Mern-Shop",
+  "name": "e-shop-tutorial",
   "builds": [{ "src": "server.js", "use": "@vercel/node" }],
-  "routes": [
-    {
-      "src": "/{.*}",
-      "dest": "/server.js"
-    }
-  ]
+  "routes": [{ "src": "/(.*)", "dest": "/server.js" }]
 }

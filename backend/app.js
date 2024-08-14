@@ -33,7 +33,7 @@ app.use(Express.json());
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://mern-shop-sirj.vercel.app/",
     credentials: true,
   })
 );

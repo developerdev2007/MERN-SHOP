@@ -69,7 +69,7 @@ const Header = ({ activeHeading }) => {
           <div className="">
             <Link to="/" className="">
               <img
-                src="https://www.simicart.com/blog/wp-content/uploads/eCommerce-logo.jpg"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPkUwimZ2dcmd7cY3qq_DLg9HiyckRgm6GWA&s"
                 alt=""
                 className="w-[140px] h-[70px] object-cover"
               />
@@ -233,7 +233,7 @@ const Header = ({ activeHeading }) => {
           <div className="">
             <Link to="/">
               <img
-                src="https://www.simicart.com/blog/wp-content/uploads/eCommerce-logo.jpg"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPkUwimZ2dcmd7cY3qq_DLg9HiyckRgm6GWA&s"
                 alt="logo"
                 className="object-cover w-20 h-16 mt-2 cursor-pointer"
               />

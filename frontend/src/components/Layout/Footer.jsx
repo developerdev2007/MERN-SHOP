@@ -35,7 +35,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 gap-6 px-5 py-16 sm:grid-cols-3 lg:grid-cols-4 sm:px-8 sm:text-center ">
           <ul className="flex flex-col items-center px-5 text-center sm:text-start sm:block ">
             <img
-              src="https://www.simicart.com/blog/wp-content/uploads/eCommerce-logo.jpg"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPkUwimZ2dcmd7cY3qq_DLg9HiyckRgm6GWA&s"
               alt=""
               className="object-cover w-24 h-16 rounded-full "
             />

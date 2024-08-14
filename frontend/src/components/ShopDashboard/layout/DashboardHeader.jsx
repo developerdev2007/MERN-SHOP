@@ -16,7 +16,7 @@ const DashboardHeader = () => {
         <div className="">
           <Link to="/">
             <img
-              src="https://www.simicart.com/blog/wp-content/uploads/eCommerce-logo.jpg"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPkUwimZ2dcmd7cY3qq_DLg9HiyckRgm6GWA&s"
               alt=""
               className="object-cover h-24 shadow-inner bg w-28"
             />

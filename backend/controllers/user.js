@@ -41,7 +41,7 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
     };
 
     const activationToken = createActivationToken(user);
-    const activationURL = `http://localhost:3000/activation/${activationToken}`;
+    const activationURL = `https://mern-shop-sirj.vercel.app/activation/${activationToken}`;
     try {
       await sendMail({
         email: user.email,

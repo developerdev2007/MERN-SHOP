@@ -14,12 +14,19 @@ import order from "./controllers/order.js";
 import conversation from "./controllers/conversation.js";
 import message from "./controllers/message.js";
 import withdraw from "./controllers/withdraw.js";
+import path from "path";
 const app = Express();
 
 app.use(Express.json());
 app.use(cookieParser());
-app.use("/", Express.static("uploads"));
-app.use("/", (req, res, next) => {
+app.use(
+  cors({
+    origin: "https://mern-shop-sirj.vercel.app/",
+    credentials: true,
+  })
+);
+app.use("/", Express.static(path.join(__dirname, "./uploads")));
+app.use("/test", (req, res, next) => {
   res.send("Hello world!!");
 });
 app.use(
@@ -30,13 +37,6 @@ app.use(
 app.use(bodyParser.json({ extended: true, limit: "50mb" }));
 
 app.use(Express.json());
-
-app.use(
-  cors({
-    origin: "https://mern-shop-sirj.vercel.app/",
-    credentials: true,
-  })
-);
 
 ///***config*/
 if (process.env.NODE_ENV !== "PRODUCTION") {

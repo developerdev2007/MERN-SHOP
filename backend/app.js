@@ -21,7 +21,7 @@ app.use(Express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://mern-shop-sirj.vercel.app/",
+    origin: "https://mern-shop-sirj.vercel.app",
     credentials: true,
   })
 );

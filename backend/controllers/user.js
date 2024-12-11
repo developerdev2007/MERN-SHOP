@@ -9,6 +9,9 @@ import sendMail from "../utils/sendMail.js";
 import catchAsyncError from "../middleware/catchAsyncError.js";
 import { sendToken } from "../utils/jwtToken.js";
 import { isAdmin, isAuthenticated } from "../middleware/auth.js";
+import { configDotenv } from "dotenv";
+
+configDotenv();
 
 const router = express.Router();
 
@@ -41,7 +44,7 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
     };
 
     const activationToken = createActivationToken(user);
-    const activationURL = `https://mern-shop-sirj.vercel.app/activation/${activationToken}`;
+    const activationURL = `${process.env.FRONTEND_API}/activation/${activationToken}`;
     try {
       await sendMail({
         email: user.email,

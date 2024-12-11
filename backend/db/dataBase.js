@@ -3,8 +3,7 @@ import mongoose from "mongoose";
 const connectDB = () => {
   mongoose
     .connect(process.env.DB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      // autoIndex: true,
     })
     .then((data) => {
       console.log(

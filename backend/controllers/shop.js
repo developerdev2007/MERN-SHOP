@@ -47,7 +47,7 @@ router.post("/create-seller", upload.single("file"), async (req, res, next) => {
 
     const activationToken = createActivationToken(seller);
 
-    const activationURL = `https://mern-shop-sirj.vercel.app/seller/activation/${activationToken}`;
+    const activationURL = `${process.env.FRONTEND_API}/seller/activation/${activationToken}`;
 
     try {
       await sendMail({

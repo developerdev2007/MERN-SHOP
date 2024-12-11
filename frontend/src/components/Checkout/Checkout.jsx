@@ -68,35 +68,37 @@ const Checkout = () => {
 
     const name = couponCode;
 
-    await axios.get(`${server}/coupon/get-coupon-value/${name}`).then((res) => {
-      const shopId = res?.data?.couponCode?.shop?._id;
-      const couponCodeValue = res?.data?.couponCode?.value;
-      if (res.data.couponCode === null) {
-        toast.error("coupon code doesn't exist");
-        setCouponCode("");
-      } else {
-        const isCouponCodeValid =
-          cart && cart?.filter((item) => item?.shopId === shopId);
-
-        if (isCouponCodeValid.length === 0) {
-          toast.error("this coupon code is not for this shop");
-
+    await axios
+      .get(`${process.env.REACT_APP_API_URL}/coupon/get-coupon-value/${name}`)
+      .then((res) => {
+        const shopId = res?.data?.couponCode?.shop?._id;
+        const couponCodeValue = res?.data?.couponCode?.value;
+        if (res.data.couponCode === null) {
+          toast.error("coupon code doesn't exist");
           setCouponCode("");
         } else {
-          const validPrice = isCouponCodeValid.reduce(
-            (acc, item) => acc + item.qty * item.discountPrice,
-            0
-          );
-          //   console.log(validPrice);
+          const isCouponCodeValid =
+            cart && cart?.filter((item) => item?.shopId === shopId);
 
-          const discountPrice = (validPrice * couponCodeValue) / 100;
-          setDiscountPrice(discountPrice);
-          setCouponCodeData(res.data.couponCode);
-          setCouponCode("");
+          if (isCouponCodeValid.length === 0) {
+            toast.error("this coupon code is not for this shop");
+
+            setCouponCode("");
+          } else {
+            const validPrice = isCouponCodeValid.reduce(
+              (acc, item) => acc + item.qty * item.discountPrice,
+              0
+            );
+            //   console.log(validPrice);
+
+            const discountPrice = (validPrice * couponCodeValue) / 100;
+            setDiscountPrice(discountPrice);
+            setCouponCodeData(res.data.couponCode);
+            setCouponCode("");
+          }
         }
-      }
-      console.log(res.data);
-    });
+        console.log(res.data);
+      });
   };
   const discountPercentage = couponCodeData ? discountPrice : "";
 

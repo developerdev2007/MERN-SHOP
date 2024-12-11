@@ -17,7 +17,7 @@ const AllProducts = () => {
     const fetchProducts = async () => {
       try {
         const { data } = await axios.get(
-          `${server}/product/all-products-admin`,
+          `${process.env.REACT_APP_API_URL}/product/all-products-admin`,
           {
             withCredentials: true,
           }

@@ -21,7 +21,7 @@ const ShopInfo = ({ isOwner }) => {
     dispatch(getAllProductsShop(id));
     setLoading(true);
     axios
-      .get(`${server}/shop/get-shop-info/${id}`)
+      .get(`${process.env.REACT_APP_API_URL}/shop/get-shop-info/${id}`)
       .then((res) => {
         setData(res.data.shop);
         setLoading(false);
@@ -49,7 +49,7 @@ const ShopInfo = ({ isOwner }) => {
 
   const averageRatings = totalRatings / totalReviews || 0;
   const logoutHandler = async () => {
-    await axios.get(`${server}/shop/logout`, {
+    await axios.get(`${process.env.REACT_APP_API_URL}/shop/logout`, {
       withCredentials: true,
     });
     window.location.reload();

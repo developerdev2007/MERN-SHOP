@@ -16,9 +16,12 @@ const AdminAllEvents = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const { data } = await axios.get(`${server}/event/all-events-admin`, {
-          withCredentials: true,
-        });
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_API_URL}/event/all-events-admin`,
+          {
+            withCredentials: true,
+          }
+        );
         setEvents(data.events);
       } catch (error) {
         console.log(error);

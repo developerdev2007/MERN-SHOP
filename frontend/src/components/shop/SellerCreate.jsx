@@ -44,7 +44,11 @@ const SellerCreate = () => {
 
     ////*** sending data  */
     await axios
-      .post(`${server}/shop/create-seller`, newForm, config)
+      .post(
+        `${process.env.REACT_APP_API_URL}/shop/create-seller`,
+        newForm,
+        config
+      )
       .then((res) => {
         toast.success(res.data.message);
         // setName("");

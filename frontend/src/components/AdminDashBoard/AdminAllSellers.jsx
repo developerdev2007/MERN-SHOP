@@ -23,7 +23,9 @@ const AdminAllSellers = () => {
   const handleDelete = async (id) => {
     // Delete user
     await axios
-      .delete(`${server}/shop/delete-shop/${id}`, { withCredentials: true })
+      .delete(`${process.env.REACT_APP_API_URL}/shop/delete-shop/${id}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log(res.data);
         toast.success(res.data.message);

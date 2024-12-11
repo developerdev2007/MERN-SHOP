@@ -87,7 +87,11 @@ const Payment = () => {
     };
 
     await axios
-      .post(`${server}/order/create-order`, order, config)
+      .post(
+        `${process.env.REACT_APP_API_URL}/order/create-order`,
+        order,
+        config
+      )
       .then((res) => {
         setOpen(false);
         toast.success("Order has been successfully done !");
@@ -119,7 +123,7 @@ const Payment = () => {
       };
 
       const { data } = await axios.post(
-        `${server}/payment/process`,
+        `${process.env.REACT_APP_API_URL}/payment/process`,
         paymentData,
         config
       );
@@ -151,7 +155,11 @@ const Payment = () => {
           };
 
           await axios
-            .post(`${server}/order/create-order`, order, config)
+            .post(
+              `${process.env.REACT_APP_API_URL}/order/create-order`,
+              order,
+              config
+            )
             .then((res) => {
               setOpen(false);
               toast.success("Order has been succesfully Created");
@@ -185,7 +193,11 @@ const Payment = () => {
     };
 
     await axios
-      .post(`${server}/order/create-order`, order, config)
+      .post(
+        `${process.env.REACT_APP_API_URL}/order/create-order`,
+        order,
+        config
+      )
       .then((res) => {
         setOpen(false);
         toast.success("Order has been succesfully Created");

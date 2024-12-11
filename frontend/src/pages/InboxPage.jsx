@@ -11,7 +11,8 @@ import { AiOutlineArrowRight, AiOutlineSend } from "react-icons/ai";
 import { TfiGallery } from "react-icons/tfi";
 import styles from "../styles/style";
 
-const URL = "http://localhost:5000";
+const URL = process.env.REACT_APP_CHAT_API_URL;
+console.log(process.env.REACT_APP_CHAT_API_URL);
 
 const socketId = io(URL, {
   transports: ["websocket"],
@@ -64,7 +65,7 @@ const InboxPage = () => {
     const fetchConversations = async () => {
       try {
         const res = await axios.get(
-          `${server}/conversation/get-user-conversation/${user?._id}`,
+          `${process.env.REACT_APP_API_URL}/conversation/get-user-conversation/${user?._id}`,
           {
             withCredentials: true,
           }
@@ -112,10 +113,13 @@ const InboxPage = () => {
 
     console.log("updateMessage hello");
     await axios
-      .put(`${server}/conversation/update-last-message/${currentChat?._id}`, {
-        lastMessage: newMessage,
-        lasMessageId: user?._id,
-      })
+      .put(
+        `${process.env.REACT_APP_API_URL}/conversation/update-last-message/${currentChat?._id}`,
+        {
+          lastMessage: newMessage,
+          lasMessageId: user?._id,
+        }
+      )
       .then((res) => {
         console.log(res.data);
         // toast.success(res.data.message);
@@ -146,7 +150,10 @@ const InboxPage = () => {
     try {
       if (newMessage !== "") {
         await axios
-          .post(`${server}/message/create-new-message`, message)
+          .post(
+            `${process.env.REACT_APP_API_URL}/message/create-new-message`,
+            message
+          )
           .then((res) => {
             // toast.success(res.data.msg);
             setMessages([...messages], res.data.message);
@@ -167,10 +174,13 @@ const InboxPage = () => {
   ////!! handle image input and uploader
   const updateLastMessageForImage = async () => {
     await axios
-      .put(`${server}/conversation/update-last-message/${currentChat?._id}`, {
-        lastMessage: "Photo",
-        lasMessageId: user?._id,
-      })
+      .put(
+        `${process.env.REACT_APP_API_URL}/conversation/update-last-message/${currentChat?._id}`,
+        {
+          lastMessage: "Photo",
+          lasMessageId: user?._id,
+        }
+      )
       .then((res) => {
         console.log(res.data);
         // toast.success(res.data.message);
@@ -199,7 +209,10 @@ const InboxPage = () => {
     });
     try {
       await axios
-        .post(`${server}/message/create-new-message`, formData)
+        .post(
+          `${process.env.REACT_APP_API_URL}/message/create-new-message`,
+          formData
+        )
         .then((res) => {
           // toast.success(res.data.msg);
           setImage();
@@ -224,7 +237,9 @@ const InboxPage = () => {
     const getAllMessage = async () => {
       try {
         await axios
-          .get(`${server}/message/get-all-messages/${currentChat?._id}`)
+          .get(
+            `${process.env.REACT_APP_API_URL}/message/get-all-messages/${currentChat?._id}`
+          )
           .then((res) => {
             setMessages(res.data.messages);
           })
@@ -314,7 +329,7 @@ const MessageList = ({
 
     const getUser = async () => {
       await axios
-        .get(`${server}/shop/get-shop-info/${userId}`)
+        .get(`${process.env.REACT_APP_API_URL}/shop/get-shop-info/${userId}`)
         .then((res) => {
           setUser(res.data.shop);
           //   toast.success("user data has been finfded");

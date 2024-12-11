@@ -28,7 +28,7 @@ const OrderDetails = () => {
     toast.success(status);
     await axios
       .put(
-        `${server}/order/update-order-status/${id}`,
+        `${process.env.REACT_APP_API_URL}/order/update-order-status/${id}`,
         { status },
         {
           withCredentials: true,
@@ -50,7 +50,7 @@ const OrderDetails = () => {
 
     await axios
       .put(
-        `${server}/order/order-refund-success/${id}`,
+        `${process.env.REACT_APP_API_URL}/order/order-refund-success/${id}`,
         { status },
         {
           withCredentials: true,

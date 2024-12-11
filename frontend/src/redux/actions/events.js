@@ -9,7 +9,7 @@ export const createEvent = (newForm) => async (dispatch) => {
     const config = { headers: { "Content-Type": "multipart/form-data" } };
 
     const { data } = await axios.post(
-      `${server}/event/create-event`,
+      `${process.env.REACT_APP_API_URL}/event/create-event`,
       newForm,
       config
     );
@@ -35,7 +35,7 @@ export const getAllEvents = (id) => async (dispatch) => {
     dispatch({ type: "getAllEventsRequest" });
 
     const { data } = await axios.get(
-      `${server}/event/get-all-events-shop/${id}`
+      `${process.env.REACT_APP_API_URL}/event/get-all-events-shop/${id}`
     );
 
     dispatch({ type: "getAllEventsSuccess", payload: data?.events });
@@ -52,7 +52,9 @@ export const getAllEventsAll = () => async (dispatch) => {
   try {
     dispatch({ type: "getAllEventsRequestAll" });
 
-    const { data } = await axios.get(`${server}/event/get-all-events`);
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_URL}/event/get-all-events`
+    );
 
     dispatch({ type: "getAllEventsSuccessAll", payload: data?.events });
   } catch (error) {
@@ -70,7 +72,7 @@ export const deleteEvent = (id) => async (dispatch) => {
 
     // console.log(id);
     const { data } = await axios.delete(
-      `${server}/event/delete-shop-event/${id}`,
+      `${process.env.REACT_APP_API_URL}/event/delete-shop-event/${id}`,
       {
         withCredentials: true,
       }

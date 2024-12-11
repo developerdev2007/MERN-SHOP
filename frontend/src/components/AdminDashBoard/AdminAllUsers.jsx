@@ -17,9 +17,12 @@ const AdminAllUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const { data } = await axios.get(`${server}/user/admin-all-users`, {
-          withCredentials: true,
-        });
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_API_URL}/user/admin-all-users`,
+          {
+            withCredentials: true,
+          }
+        );
         setAllUsers(data.users);
       } catch (error) {
         console.log(error);
@@ -32,7 +35,9 @@ const AdminAllUsers = () => {
   const handleDelete = async (id) => {
     // Delete user
     await axios
-      .delete(`${server}/user/delete-user/${id}`, { withCredentials: true })
+      .delete(`${process.env.REACT_APP_API_URL}/user/delete-user/${id}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         // console.log(res.data);
         toast.success(res.data.message);

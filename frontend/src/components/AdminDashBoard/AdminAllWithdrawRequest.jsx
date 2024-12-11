@@ -20,9 +20,12 @@ const AdminAllWithdrawRequest = () => {
 
   const getAllWithdraw = async () => {
     await axios
-      .get(`${server}/withdraw/get-all-withdrawRequest`, {
-        withCredentials: true,
-      })
+      .get(
+        `${process.env.REACT_APP_API_URL}/withdraw/get-all-withdrawRequest`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         setData(res.data.withdraws);
         console.log(res);
@@ -38,7 +41,7 @@ const AdminAllWithdrawRequest = () => {
   const handleSubmit = async () => {
     await axios
       .put(
-        `${server}/withdraw/update-withdraw-request/${withdrawData.id}`,
+        `${process.env.REACT_APP_API_URL}/withdraw/update-withdraw-request/${withdrawData.id}`,
         { sellerId: withdrawData?.shopId },
         {
           withCredentials: true,

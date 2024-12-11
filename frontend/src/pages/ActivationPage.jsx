@@ -11,7 +11,7 @@ const ActivationPage = () => {
     if (activation_token) {
       const activationEmail = async () => {
         await axios
-          .post(`${server}/user/activation`, {
+          .post(`${process.env.REACT_APP_API_URL}/user/activation`, {
             activation_token,
           })
           .then((res) => {

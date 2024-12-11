@@ -42,7 +42,7 @@ const Profile = () => {
     formData.append("image", e.target.files[0]);
 
     const ans = await axios
-      .put(`${server}/user/update-avatar`, formData, {
+      .put(`${process.env.REACT_APP_API_URL}/user/update-avatar`, formData, {
         headers: {
           "Content-Type": "multiple/form-data",
         },

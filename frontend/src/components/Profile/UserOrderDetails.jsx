@@ -30,7 +30,7 @@ const UserOrderDetails = () => {
 
     await axios
       .put(
-        `${server}/order/give-a-refund/${id}`,
+        `${process.env.REACT_APP_API_URL}/order/give-a-refund/${id}`,
         {
           status: "Processing Refund",
         },
@@ -54,7 +54,7 @@ const UserOrderDetails = () => {
     console.log(selectedItem);
     await axios
       .put(
-        `${server}/product/create-new-review`,
+        `${process.env.REACT_APP_API_URL}/product/create-new-review`,
         {
           user,
           rating,

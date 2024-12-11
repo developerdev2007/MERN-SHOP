@@ -29,12 +29,16 @@ const ShopSettings = () => {
 
     formData.append("image", e.target.files[0]);
     await axios
-      .put(`${server}/shop/update-shop-avatar`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        withCredentials: true,
-      })
+      .put(
+        `${process.env.REACT_APP_API_URL}/shop/update-shop-avatar`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         toast.success(res.data.message);
         dispatch(loadSeller());
@@ -49,7 +53,7 @@ const ShopSettings = () => {
 
     await axios
       .put(
-        `${server}/shop/update-shop-info`,
+        `${process.env.REACT_APP_API_URL}/shop/update-shop-info`,
         {
           address,
           name,

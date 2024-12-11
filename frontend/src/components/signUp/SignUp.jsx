@@ -35,7 +35,11 @@ const SignUp = () => {
     newForm.append("password", password);
     ////*** sending data  */
     axios
-      .post(`${server}/user/create-user`, newForm, config)
+      .post(
+        `${process.env.REACT_APP_API_URL}/user/create-user`,
+        newForm,
+        config
+      )
       .then((res) => {
         toast.success(res.data.message);
         setName("");

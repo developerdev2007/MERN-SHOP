@@ -26,6 +26,11 @@ const BestDeals = () => {
           {data &&
             data?.map((d, index) => <ProductCard key={index} data={d} />)}
         </div>
+        {!!data && (
+          <h3 className="w-full flex justify-center items-center  text-3xl text-red-500 font-medium mb-10">
+            No Products For Best Deal Currently Available
+          </h3>
+        )}
       </div>
     </>
   );

@@ -8,7 +8,7 @@ const Navbar = ({ active }) => {
     <>
       <div className={`block 800px:${styles.normalFlex}`}>
         {navItems &&
-          navItems.map((navItem, index) => (
+          navItems?.map((navItem, index) => (
             <>
               <div className="flex" key={navItem}>
                 <Link

@@ -7,7 +7,7 @@ export const getAllOrdersOfUser = (userId) => async (dispatch) => {
     dispatch({ type: "getAllOrdersOfUserRequest" });
 
     const { data } = await axios.get(
-      `${server}/order/get-all-orders/${userId}`
+      `${process.env.REACT_APP_API_URL}/order/get-all-orders/${userId}`
     );
     // console.log(data);
     dispatch({ type: "getAllOrdersOfUserSuccess", payload: data?.orders });
@@ -24,7 +24,7 @@ export const getAllOrdersOfShop = (sellerId) => async (dispatch) => {
     dispatch({ type: "getAllOrdersOfSellerRequest" });
 
     const { data } = await axios.get(
-      `${server}/order/get-all-orders-seller/${sellerId}`
+      `${process.env.REACT_APP_API_URL}/order/get-all-orders-seller/${sellerId}`
     );
     // console.log(data);
     dispatch({ type: "getAllOrdersOfSellerSuccess", payload: data?.orders });
@@ -40,9 +40,12 @@ export const getAdminAllOrders = () => async (dispatch) => {
   try {
     dispatch({ type: "getAdminAllOrdersRequest" });
 
-    const { data } = await axios.get(`${server}/order/admin-all-orders`, {
-      withCredentials: true,
-    });
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_URL}/order/admin-all-orders`,
+      {
+        withCredentials: true,
+      }
+    );
     dispatch({ type: "getAdminAllOrdersSuccess", payload: data?.orders });
   } catch (error) {
     dispatch({

@@ -14,7 +14,7 @@ const ChangePassword = () => {
 
     await axios
       .put(
-        `${server}/user/update-user-password`,
+        `${process.env.REACT_APP_API_URL}/user/update-user-password`,
         { oldPassword, newPassword, confirmPassword },
         {
           withCredentials: true,

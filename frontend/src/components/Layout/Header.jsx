@@ -34,11 +34,13 @@ const Header = ({ activeHeading }) => {
   const { wishList } = useSelector((state) => state.wishList);
 
   useEffect(() => {
+    let timeOut;
     if (dropDown) {
-      setTimeout(() => {
+      timeOut = setTimeout(() => {
         setDropDown(false);
       }, 10000);
     }
+    return clearTimeout(timeOut);
   }, [dropDown]);
 
   const handleSearchChange = (e) => {
@@ -71,7 +73,7 @@ const Header = ({ activeHeading }) => {
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPkUwimZ2dcmd7cY3qq_DLg9HiyckRgm6GWA&s"
                 alt=""
-                className="w-[140px] h-[70px] object-cover"
+                className="aspect-video h-20 w-40 object-contain"
               />
             </Link>
           </div>
@@ -185,7 +187,7 @@ const Header = ({ activeHeading }) => {
                 <>
                   <Link to="/profile">
                     <img
-                      src={`${backend_url}${user?.avatar}`}
+                      src={`${backend_url}/${user?.avatar}`}
                       alt=""
                       className="object-cover rounded-full w-9 h-9"
                     />
